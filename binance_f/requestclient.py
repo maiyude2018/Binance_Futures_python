@@ -341,6 +341,18 @@ class RequestClient(object):
         self.refresh_limits(response[1])
         return response[0]
 
+    def get_account_information_v2(self) -> any:
+        """
+        Account Information (USER_DATA)
+
+        GET /fapi/v2/account (HMAC SHA256)
+
+        Get current account information.
+        """
+        response = call_sync(self.request_impl.get_account_information_v2())
+        self.refresh_limits(response[1])
+        return response[0]
+
     def change_initial_leverage(self, symbol: 'str', leverage: 'int') -> any:
         """
         Change Initial Leverage (TRADE)
